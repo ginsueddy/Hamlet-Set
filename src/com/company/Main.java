@@ -24,7 +24,7 @@ public class Main {
         while (true){
             System.out.print("Give me a word and I will see if it is in Hamlet. > ");
             String userWord = userInput.next();
-            if(hamletText.contains(userWord)){
+            if(hamletText.contains(userWord.toLowerCase())){
                 System.out.println(userWord + " is in Hamlet!");
             }
             else {
