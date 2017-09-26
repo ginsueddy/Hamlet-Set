@@ -12,7 +12,7 @@ public class Main {
         Set<String> hamletText = new HashSet<String>();
 
         while (hamlet.hasNext()){
-            String word = hamlet.next().toLowerCase();
+            String word = hamlet.next().toLowerCase().replaceAll("[^a-z, ^0-9, ^']", "");
             hamletText.add(word);
         }
         System.out.println("Number of unique words in Hamlet: " + hamletText.size());
