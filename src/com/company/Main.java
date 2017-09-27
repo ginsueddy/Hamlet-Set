@@ -6,21 +6,26 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner hamlet = new Scanner(new File("/Users/ginsueddy/Desktop/github/Hamlet-Set/src/com/company/hamlet.txt"));
-        Scanner userInput = new Scanner(System.in);
+        Scanner hamlet = new Scanner(new File("hamlet.txt"));
 
-        Set<String> hamletText = new HashSet<String>();
+        Set<String> hamletTextHash = new HashSet<String>();
+        Set<String> hamletTextTree = new TreeSet<String>();
+        Map<String, Integer> hamletMap = new HashMap<String, Integer>();
 
         while (hamlet.hasNext()){
             String word = hamlet.next().toLowerCase().replaceAll("[^a-z, ^0-9, ^']", "");
-            hamletText.add(word);
+            if(hamletMap.containsKey(word)){
+                int countTotal = hamletMap.get(word);
+            }
         }
-        System.out.println("Number of unique words in Hamlet: " + hamletText.size());
+        System.out.println("Number of unique words in Hamlet: " + hamletTextTree.size());
         System.out.println();
-        searchFeature(userInput, hamletText);
+        //searchFeature(userInput, hamletTextHash);
     }
 
-    public static void searchFeature(Scanner userInput, Set<String> hamletText){
+    public static void searchFeature(Set<String> hamletText){
+        Scanner userInput = new Scanner(System.in);
+
         while (true){
             System.out.print("Give me a word and I will see if it is in Hamlet. > ");
             String userWord = userInput.next();
@@ -34,12 +39,4 @@ public class Main {
         }
     }
 
-    public static void getDirectory(File hamlet){
-        //use this method to grab the directory of hamlet.txt if the directory changes when different computer is used
-        try {
-            System.out.println(hamlet.getCanonicalPath());
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
 }
